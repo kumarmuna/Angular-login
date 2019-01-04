@@ -1,0 +1,99 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Login Form</h1>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="username">User_Name</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username"
+          #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="username" required [(ngModel)]="model.password" name="password"
+          #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Password is required
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- <div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name: </div>
+    <div class="col-xs-9  pull-left">{{ model.username }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3">Password: </div>
+    <div class="col-xs-9 pull-left">{{ model.password }}</div>
+  </div>
+  <button class="btn btn-primary" (click)="submitted=false">Login Again</button>
+</div> -->
+
+<div class="container" [hidden]="!submitted">
+  <div class="row">
+    <div class="col">
+      <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-2">
+              <form name="empForm">
+                <table>
+                  <tr>
+                    <th colspan="2">Add Employee</th>
+                  </tr>
+                  <tr>
+                    <td>Name:</td>
+                    <td><input id="name" name="name"></td>
+                  </tr>
+                  <tr>
+                    <td>ID:</td>
+                    <td><input id="id" name="id"></td>
+                  </tr>
+                  <tr>
+                    <td>Address:</td>
+                    <td><input id="address" name="address"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"> <button type="button" (click)="createEmployee()" class="blue-button">submit</button></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </header>
+      </section>
+      <section class="main">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>ID</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <th scope="row">{{employee.name}}</th>
+              <td>{{employee.id}}</td>
+              <td>{{employee.address}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteEmployee(employee)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>
