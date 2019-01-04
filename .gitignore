@@ -1,3 +1,7 @@
 First clone then run below command:
 
-1 - 
+1 - navigate to project Angular-login
+2 - npm install (it will load all required jar files)
+3 - ng serve
+4 - open browser http://localhost:4200
+5 - username - Manas and pwd - manas
